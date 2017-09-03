@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="ARKitDiceSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Klz-qn-O3V" customClass="ARSCNView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZR-KI-rTD">
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-PJ-w8U">
+                                        <rect key="frame" x="100" y="34.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="floorSwitchChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="Tgg-TJ-PTg"/>
+                                        </connections>
+                                    </switch>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" maximumValue="100" stepValue="0.01" translatesAutoresizingMaskIntoConstraints="NO" id="mta-Um-gTn">
+                                        <rect key="frame" x="261" y="35.5" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="sizeStepperChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="IMS-5n-Off"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.20m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZjV-BZ-qgp">
+                                        <rect key="frame" x="154" y="40" width="102" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZjV-BZ-qgp" firstAttribute="centerY" secondItem="WZR-KI-rTD" secondAttribute="centerY" id="8tU-gT-1ae"/>
+                                    <constraint firstItem="mta-Um-gTn" firstAttribute="centerY" secondItem="WZR-KI-rTD" secondAttribute="centerY" id="VFi-P2-Arg"/>
+                                    <constraint firstItem="Tpf-PJ-w8U" firstAttribute="centerY" secondItem="WZR-KI-rTD" secondAttribute="centerY" id="Wqe-dO-9Jt"/>
+                                    <constraint firstItem="ZjV-BZ-qgp" firstAttribute="leading" secondItem="Tpf-PJ-w8U" secondAttribute="trailing" constant="5" id="ZJA-UY-eeX"/>
+                                    <constraint firstItem="Tpf-PJ-w8U" firstAttribute="leading" secondItem="WZR-KI-rTD" secondAttribute="leading" constant="100" id="bPH-AI-yIj"/>
+                                    <constraint firstAttribute="height" constant="100" id="gKv-V6-Va8"/>
+                                    <constraint firstAttribute="trailing" secondItem="mta-Um-gTn" secondAttribute="trailing" constant="20" id="r26-vl-zAD"/>
+                                    <constraint firstItem="mta-Um-gTn" firstAttribute="leading" secondItem="ZjV-BZ-qgp" secondAttribute="trailing" constant="5" id="rp6-xZ-Rmj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.39165606739999997" green="0.59924448119999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WZR-KI-rTD" firstAttribute="bottom" secondItem="GM6-fF-8YH" secondAttribute="bottom" id="8bt-59-fY9"/>
+                            <constraint firstItem="WZR-KI-rTD" firstAttribute="trailing" secondItem="GM6-fF-8YH" secondAttribute="trailing" id="TA6-j4-guX"/>
+                            <constraint firstItem="WZR-KI-rTD" firstAttribute="leading" secondItem="GM6-fF-8YH" secondAttribute="leading" id="uAZ-v7-aCw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GM6-fF-8YH"/>
+                    </view>
+                    <connections>
+                        <outlet property="floorSwitch" destination="Tpf-PJ-w8U" id="Iv2-kI-EVu"/>
+                        <outlet property="sceneView" destination="Klz-qn-O3V" id="K9B-hv-Tto"/>
+                        <outlet property="sizeLabel" destination="ZjV-BZ-qgp" id="UeJ-Ua-JUM"/>
+                        <outlet property="sizeStepper" destination="mta-Um-gTn" id="XAl-gX-DtF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109.59999999999999" y="33.733133433283363"/>
+        </scene>
+    </scenes>
+</document>
