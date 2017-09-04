@@ -105,7 +105,7 @@
 				TargetAttributes = {
 					276DE6B01F5B2CEC00BEB8B9 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -286,12 +286,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 359LVN2JBK;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T32GQ84AVX;
 				INFOPLIST_FILE = ARKitDiceSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ne.sapporoworks.ARKitDiceSample;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ne.sapporoworks.DiceSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f903f61d-3e2c-44be-9cdf-ebd5d4946e37";
+				PROVISIONING_PROFILE_SPECIFIER = ARKitDiceSample;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,12 +303,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 359LVN2JBK;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T32GQ84AVX;
 				INFOPLIST_FILE = ARKitDiceSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jp.ne.sapporoworks.ARKitDiceSample;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.ne.sapporoworks.DiceSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f903f61d-3e2c-44be-9cdf-ebd5d4946e37";
+				PROVISIONING_PROFILE_SPECIFIER = ARKitDiceSample;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -62,16 +62,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: Tapped
     @objc func tapped(recognizer: UIGestureRecognizer) {
+        if dices.count > 0 {
+            for dice in dices {
+                dice.removeFromParentNode()
+            }
+            dices.removeAll()
+            return
+        }
+
         let sceneView = recognizer.view as! ARSCNView
         let touchLocation = recognizer.location(in: sceneView)
         
         let hitTestResult = sceneView.hitTest(touchLocation, types: .existingPlaneUsingExtent)
         if !hitTestResult.isEmpty {
             if let hitResult = hitTestResult.first {
-                for dice in dices {
-                    dice.removeFromParentNode()
-                }
-                //dices.removeAll()
                 for _ in [0,1] {
                     let dice = Dice(size: diceSize, hitResult: hitResult)
                     dices.append(dice)
@@ -83,33 +87,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-//    func addBox(hitResult: ARHitTestResult) {
-//        let boxGeometry = SCNBox(width: diceSize, height: diceSize, length: diceSize, chamferRadius: 0.001)
-//        let material = SCNMaterial()
-//        material.diffuse.contents = UIImage(named: "block")
-//        boxGeometry.materials = [material]
-//
-//        let boxNode = SCNNode(geometry: boxGeometry)
-//        boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: boxGeometry, options: [:]))
-//        boxNode.physicsBody?.categoryBitMask = 1
-////        boxNode.physicsBody?.friction = 1
-////        boxNode.physicsBody?.restitution = 0
-////        boxNode.physicsBody?.rollingFriction = 0
-////        boxNode.physicsBody?.mass = 100
-//        boxNode.physicsBody?.restitution = 0.8 // 弾み具合　0:弾まない 3:弾みすぎ
-//        //boxNode.physicsBody?.rollingFriction = 1 //回転運動に対する摩擦による抵抗力。デフォルト０で摩擦ない
-//            //boxNode.physicsBody?.damping = 1  //空気の摩擦抵抗 1でゆっくり落ちる
-//        boxNode.physicsBody?.angularDamping = 1// Damping は移動に対してであったが、こちらは回転に関してのパラメーター。 デフォルト値は 0.1。 0.5 にすると空間での抵抗を受けゆっくり回転し、1.0 にすると全く回転はしない。
-//        boxNode.physicsBody?.friction = 1 // 設置面の荒さによって抵抗を設定する摩擦の値。 デフォルト値は 0.5。 対象の PhysicsBody の Friction も 0 の場合は摩擦抵抗がなくなり滑り続け、互いが 1.0 の場合は全く滑らなくなる。
-//        // タップした位置よりサイコロのサイズの２倍の高さから落下させる
-//        boxNode.position = SCNVector3(hitResult.worldTransform.columns.3.x, hitResult.worldTransform.columns.3.y + Float(diceSize * 2), hitResult.worldTransform.columns.3.z)
-//
-//        sceneView.scene.rootNode.addChildNode(boxNode)
-//    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let configuration = ARWorldTrackingConfiguration()
+        
+        let configuration = ARWorldTrackingSessionConfiguration()
         configuration.planeDetection = .horizontal // 平面の検出を有効化する
         sceneView.session.run(configuration)
     }

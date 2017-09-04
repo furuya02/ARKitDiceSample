@@ -42,7 +42,7 @@ class RecordingButton : UIButton {
         if !isRecording {
             isRecording = true
             RPScreenRecorder.shared().startRecording(handler: { (error) in
-                print(error)
+                print(error as Any)
             })
         } else {
             isRecording = false
