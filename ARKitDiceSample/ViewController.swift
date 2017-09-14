@@ -19,7 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var recordingButto: RecordingButton!
     var planeNodes:[PlaneNode] = []
-    var diceSize: CGFloat = 0.05
+    var diceSize: CGFloat = 0.15
     var dices: [Dice] = []
     
     override func viewDidLoad() {
@@ -82,7 +82,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     sceneView.scene.rootNode.addChildNode(dice)
                     usleep(100000)
                 }
-                print(dices.count)
             }
         }
     }
@@ -90,7 +89,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let configuration = ARWorldTrackingSessionConfiguration()
+        let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal // 平面の検出を有効化する
         sceneView.session.run(configuration)
     }
@@ -104,11 +103,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - ARSCNViewDelegate
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         
-        if !floorSwitch.isOn {
-            return
-        }
-        
         DispatchQueue.main.async {
+            if !self.floorSwitch.isOn {
+                return
+            }
             if let planeAnchor = anchor as? ARPlaneAnchor {
                 // 平面を表現するノードを追加する
                 let panelNode = PlaneNode(anchor: planeAnchor)
@@ -122,11 +120,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
 
-        if !floorSwitch.isOn {
-            return
-        }
-
         DispatchQueue.main.async {
+            if !self.floorSwitch.isOn {
+                return
+            }
             if let planeAnchor = anchor as? ARPlaneAnchor, let planeNode = node.childNodes[0] as? PlaneNode {
                 // ノードの位置及び形状を修正する
                 planeNode.update(anchor: planeAnchor)

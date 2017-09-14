@@ -41,6 +41,8 @@ class PlaneNode: SCNNode {
     func setPhysicsBody() {
         physicsBody?.categoryBitMask = 2
         physicsBody?.friction = 1 // 摩擦 0〜1.0 Default:0.5。0 1.0の場合は全く滑らなくなる
+        physicsBody?.restitution = 0// 弾み具合　0:弾まない 3:弾みすぎ
+
     }
     
     var isDisplay: Bool = false {

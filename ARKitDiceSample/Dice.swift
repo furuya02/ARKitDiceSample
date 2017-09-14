@@ -38,8 +38,13 @@ class Dice: SCNNode {
         //physicsBody?.damping = 1  // 空気の摩擦抵抗 1でゆっくり落ちる
         physicsBody?.angularDamping = 1// 回転に関する空気抵抗　0.0〜1.0 Default 0.1
         physicsBody?.friction = 1 // 設置面の摩擦の値　0.0〜1.0 Default:0.5
-        // タップした位置よりサイコロのサイズの6倍の高さから落下させる
-        position = SCNVector3(hitResult.worldTransform.columns.3.x, hitResult.worldTransform.columns.3.y + Float(size * 6), hitResult.worldTransform.columns.3.z)
+        // タップした位置よりサイコロのサイズのX倍の高さから落下させる
+        //let random = arc4random() % 5
+        position = SCNVector3(hitResult.worldTransform.columns.3.x + Float(size * CGFloat(arc4random() % 3)), hitResult.worldTransform.columns.3.y + Float(size * CGFloat(arc4random() % 3 + 5)), hitResult.worldTransform.columns.3.z)
+        
+        // 出目が変わるようにランダムに回転される
+        rotation = SCNVector4(1, 1, 1, Double(arc4random() % 10) * Double.pi)
+
     }
 }
 
